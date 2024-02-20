@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import Child from "./Child";
+import "./App.css";
+type User = {
+  id: String;
+  name: String;
+};
+const mario = {
+  id: "mario",
+  name: "",
+};
 
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 function App() {
-  const [count, setCount] = useState(0)
+  const sir = (a: string, b) => {
+    return { a, b };
+  };
 
+  sir(2, 3);
+
+  const [count, setCount] = useState(0);
+  const [user, setUser] = useState<User>({} as String);
+  // setCount("a")
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {numbers.map((number) => {
+        return <Child count={number} />;
+      })}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
