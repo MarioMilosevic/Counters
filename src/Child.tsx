@@ -1,21 +1,25 @@
-
-import React from 'react';
+import React, { useState } from "react";
 
 interface ChildProps {
   count: number;
-  increment: () => void;
-  decrement: () => void;
 }
 
-const Child: React.FC<ChildProps> = ({ count, increment, decrement }) => {
+const Child: React.FC<ChildProps> = ({ count }) => {
+  const [counter, setCounter] = useState(count);
+  const increment = () => {
+    setCounter((prev) => prev + 1);
+  };
+
+  const decrement = () => {
+    setCounter((prev) => prev - 1);
+  };
   return (
     <div className="childDiv">
       <button onClick={increment}>+</button>
-      <h2>{count}</h2>
+      <h2>{counter}</h2>
       <button onClick={decrement}>-</button>
     </div>
   );
 };
 
 export default Child;
-
